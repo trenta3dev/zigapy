@@ -23,7 +23,10 @@ class Channel(object):
             self.ziga_obj.protocol
         )
 
-    def trigger(self, event, data={}):
+    def trigger(self, event, data=None):
+        if data is None:
+            data = dict()
+
         to_post = {'event': event, 'data': data}
         headers = {'Content-type': 'application/json'}
         response = requests.post(
