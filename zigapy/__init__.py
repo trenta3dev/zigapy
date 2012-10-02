@@ -3,7 +3,8 @@ import json
 
 
 class Ziga(object):
-    def __init__(self, applicationKey, host, port=80, protocol='http'):
+    def __init__(self, applicationKey, host='localhost',
+                 port=9442, protocol='http'):
         self.app_key = applicationKey
         self.protocol = protocol
         self.host = host

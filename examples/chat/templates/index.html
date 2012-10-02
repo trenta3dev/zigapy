@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="//raw.github.com/Yaffle/EventSource/master/eventsource.js"></script>
+    <script type="text/javascript" src="//localhost:9442/static/js/ziga.js"></script>
+    <script type="text/javascript">
+        (function() {
+            "use strict";
+            var api_key = 'sse'
+              , ziga = new Ziga(api_key)
+              , channel = 'my-chat-channel';
+
+            ziga.subscribe(channel);
+
+            $(function () {
+                $('#button').on('click', function () {
+                    $.post('/send/', {
+                        message: $('#message').val(),
+                        channel: channel
+                    });
+                });
+            });
+        })();
+    </script>
+</head>
+<body>
+    <div id="channel"></div>
+    <input type="text" id="message">
+    <input type="button" id="button" value="Send">
+</body>
+</html>
